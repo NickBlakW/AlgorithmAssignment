@@ -5,9 +5,17 @@ public class Main {
 
     // Exercise 1
     private static int exercise1(int N) {
+        int result = 0;
 
+        for (int i = 0; i < N; i++) {
+            if (i % 2 != 0) {
+                result += i * i;
+            } else {
+                continue;
+            }
+        }
 
-        return 0;
+        return result;
     }
 
     // Exercise 3
@@ -55,5 +63,6 @@ public class Main {
 
     public static void main(String[] args) {
 
+        System.out.println(exercise1(8));
     }
 }
