@@ -7,6 +7,7 @@ public class Main {
         int result = 0;
 
         for (int i = 0; i < N; i++) {
+            // Set result to add square if divisible by 2
             if (i % 2 != 0) {
                 result += i * i;
             } else {
@@ -47,9 +48,15 @@ public class Main {
 
     // Exercise 6
     private static int sumDivisibleBy3(int N) {
+        if (N == 0) {
+            return 0;
+        }
 
-
-        return 0;
+        if (N % 3 != 0) {
+            return sumDivisibleBy3(N - 1);
+        } else {
+            return N + sumDivisibleBy3(N-1);
+        }
     }
 
     // Exercise 7
@@ -74,9 +81,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
-        System.out.println(exercise1(8));
-        System.out.println(additive("123123"));
-        System.out.println(additive("9368164"));
+        
     }
 }
