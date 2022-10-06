@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
@@ -20,9 +19,19 @@ public class Main {
 
     // Exercise 3
     private static boolean additive(String s) {
+        StringBuilder sb = new StringBuilder(s);
 
+        if (s.length() < 3) {
+            return false;
+        }
 
-        return false;
+        if (s.charAt(0)-48 + s.charAt(1)-48 == s.charAt(2)-48) {
+            return true;
+        } else {
+            sb.delete(0, 1);
+
+            return additive(sb.toString());
+        }
     }
 
     // Exercise 4
@@ -64,5 +73,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println(exercise1(8));
+        System.out.println(additive("123123"));
+        System.out.println(additive("9368164"));
     }
 }
