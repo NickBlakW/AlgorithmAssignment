@@ -19,12 +19,15 @@ public class Main {
 
     // Exercise 3
     private static boolean additive(String s) {
+        // For deleting indices after check
         StringBuilder sb = new StringBuilder(s);
 
         if (s.length() < 3) {
             return false;
         }
 
+        // ASCII values are 48 higher than corresponding values
+        // If not true check again!
         if (s.charAt(0)-48 + s.charAt(1)-48 == s.charAt(2)-48) {
             return true;
         } else {
