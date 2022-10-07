@@ -55,7 +55,7 @@ public class Main {
         if (N % 3 != 0) {
             return sumDivisibleBy3(N - 1);
         } else {
-            return N + sumDivisibleBy3(N-1);
+            return N + sumDivisibleBy3(N - 1);
         }
     }
 
@@ -81,6 +81,47 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        
+        System.out.println("------------------------- Exercise 1 -------------------------");
+        // Test 1
+        System.out.println("---- Test 1 ----\n");
+
+        int input_1 = 8;
+        System.out.printf("Input:\t %2d %n", input_1);
+        System.out.printf("Output:\t %2d %n%n", exercise1(input_1));
+
+        // Test 2
+        System.out.println("---- Test 2 ----\n");
+
+        int input_1_2 = 10;
+        System.out.printf("Input:\t %2d %n", input_1_2);
+        System.out.printf("Output:\t %2d %n%n", exercise1(input_1_2));
+
+
+        System.out.println("------------------------- Exercise 3 -------------------------");
+        // Test 1
+        System.out.println("---- Test 1 ----\n");
+        String input_3 = "926831"; // Should return true
+        System.out.printf("Input is:\t %s%n", input_3);
+        System.out.printf("Result is:\t %b %n%n", additive(input_3));
+
+        // Test 2
+        System.out.println("---- Test 2 ----\n");
+        String input_3_2 = "523376"; // Should return false
+        System.out.printf("Input is:\t %s%n", input_3_2);
+        System.out.printf("Result is:\t %b %n%n", additive(input_3_2));
+
+
+        System.out.println("------------------------- Exercise 6 -------------------------");
+        // Test 1
+        System.out.println("---- Test 1 ----\n");
+        int input_6 = 4; // 3
+        System.out.printf("Input is:\t %d%n", input_6);
+        System.out.printf("Result is:\t %d %n%n", sumDivisibleBy3(input_6));
+
+        // Test 2
+        System.out.println("---- Test 2 ----\n");
+        int input_6_2 = 10; // 3 + 6 + 9 = 18
+        System.out.printf("Input is:\t %d%n", input_6_2);
+        System.out.printf("Result is:\t %d %n%n", sumDivisibleBy3(input_6_2));
     }
 }
