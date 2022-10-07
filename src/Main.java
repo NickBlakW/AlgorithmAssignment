@@ -4,8 +4,15 @@ public class Main {
 
     // Exercise 1
     private static int exercise1(int N) {
-        int result = 0;
+        if (N == 0) return 0;
 
+        if (N % 2 != 0) {
+            return exercise1(N - 1) + (int) Math.pow(N, 2);
+        } else {
+            return exercise1(N - 1);
+        }
+
+        /*
         for (int i = 0; i < N; i++) {
             // Set result to add square if divisible by 2
             if (i % 2 != 0) {
@@ -14,8 +21,7 @@ public class Main {
                 continue;
             }
         }
-
-        return result;
+        */
     }
 
     // Exercise 3
@@ -23,9 +29,7 @@ public class Main {
         // For deleting indices after check
         StringBuilder sb = new StringBuilder(s);
 
-        if (s.length() < 3) {
-            return false;
-        }
+        if (s.length() < 3) return false;
 
         // ASCII values are 48 higher than corresponding values
         // If not true check again!
@@ -48,9 +52,7 @@ public class Main {
 
     // Exercise 6
     private static int sumDivisibleBy3(int N) {
-        if (N == 0) {
-            return 0;
-        }
+        if (N == 0) return 0;
 
         if (N % 3 != 0) {
             return sumDivisibleBy3(N - 1);
@@ -60,10 +62,11 @@ public class Main {
     }
 
     // Exercise 7
-    private static ArrayList<Integer> exercise7(int Z) {
+    private static int[] exercise7(int Z) {
+        int[] result = new int[3];
 
 
-        return null;
+        return result;
     }
 
     // Exercise 10
@@ -85,14 +88,14 @@ public class Main {
         // Test 1
         System.out.println("---- Test 1 ----\n");
 
-        int input_1 = 8;
+        int input_1 = 8; // 1^2 + 3^2 + 5^2 + 7^2 = 84
         System.out.printf("Input:\t %2d %n", input_1);
         System.out.printf("Output:\t %2d %n%n", exercise1(input_1));
 
         // Test 2
         System.out.println("---- Test 2 ----\n");
 
-        int input_1_2 = 10;
+        int input_1_2 = 10; // 1^2 + 3^2 + 5^2 + 7^2 + 9^2 = 165
         System.out.printf("Input:\t %2d %n", input_1_2);
         System.out.printf("Output:\t %2d %n%n", exercise1(input_1_2));
 
@@ -120,8 +123,10 @@ public class Main {
 
         // Test 2
         System.out.println("---- Test 2 ----\n");
-        int input_6_2 = 10; // 3 + 6 + 9 = 18
+        int input_6_2 = 14; // 3 + 6 + 9 + 12 = 30
         System.out.printf("Input is:\t %d%n", input_6_2);
         System.out.printf("Result is:\t %d %n%n", sumDivisibleBy3(input_6_2));
+
+
     }
 }
