@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Random;
 
 public class Main {
 
@@ -79,15 +82,38 @@ public class Main {
         else return -1;
     }
 
+    private static ArrayList<Integer> fillArray(int size) {
+
+        ArrayList<Integer> array = new ArrayList<Integer>();
+        Random randomInt = new Random();
+
+        for (int i = 0; i < size; i++) {
+            array.add(randomInt.nextInt(7) + 1);
+        }
+        return array;
+    }
+
+
+
     // Exercise 11
-    private static int exercise11(ArrayList<Integer> array, int size) {
+    private static int exercise11(ArrayList<Integer> array) {
 
-
-        return 0;
+        int occurrences = 0;
+        int candidate = 0;
+        for (int i = 0; i < array.size(); i++) {
+            int checking = array.get(i);
+            occurrences = Collections.frequency(array, checking);
+            candidate = checking;
+        }
+        if (occurrences >= array.size()/2) {
+            return candidate;
+        } else {
+            return -1;
+        }
     }
 
     public static void main(String[] args) {
-        System.out.println("------------------------- Exercise 1 -------------------------");
+        /*System.out.println("------------------------- Exercise 1 -------------------------");
         // Test 1
         System.out.println("---- Test 1 ----\n");
 
@@ -143,6 +169,21 @@ public class Main {
         System.out.println("---- Test 2 ----\n");
         int input_10_2 = 4096; // 12
         System.out.printf("Input is:\t %d%n", input_10_2);
-        System.out.printf("Result is:\t %d %n%n", logTo(input_10_2));
+        System.out.printf("Result is:\t %d %n%n", logTo(input_10_2));*/
+
+        System.out.println("------------------------- Exercise 11 -------------------------");
+        // Test 1
+        System.out.println("---- Test 1 ----\n");
+
+        ArrayList<Integer> input_11_1 = new ArrayList<Integer>(Arrays.asList(7,7,3,7,3,1,7,4,7,1,7,5));
+        System.out.printf("Input:\t %s %n", input_11_1);
+        System.out.printf("Output:\t %s %n%n", exercise11(input_11_1));
+
+        // Test 2
+        System.out.println("---- Test 2 ----\n");
+
+        ArrayList<Integer> input_11_2 = new ArrayList<Integer>(fillArray(12));
+        System.out.printf("Input:\t %s %n", input_11_2);
+        System.out.printf("Output:\t %s %n%n", exercise11(input_11_2));
     }
 }
