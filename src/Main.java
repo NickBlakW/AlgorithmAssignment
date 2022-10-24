@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Random;
 
 public class Main {
@@ -14,17 +13,6 @@ public class Main {
         } else {
             return exercise1(N - 1);
         }
-
-        /*
-        for (int i = 0; i < N; i++) {
-            // Set result to add square if divisible by 2
-            if (i % 2 != 0) {
-                result += i * i;
-            } else {
-                continue;
-            }
-        }
-        */
     }
 
     // Exercise 3
@@ -82,9 +70,10 @@ public class Main {
         else return -1;
     }
 
+    // To fill an array in exercise 11
     private static ArrayList<Integer> fillArray(int size) {
 
-        ArrayList<Integer> array = new ArrayList<Integer>();
+        ArrayList<Integer> array = new ArrayList<>();
         Random randomInt = new Random();
 
         for (int i = 0; i < size; i++) {
@@ -93,10 +82,26 @@ public class Main {
         return array;
     }
 
-
-
     // Exercise 11
     private static int exercise11(ArrayList<Integer> array) {
+        int[] count = new int[8];
+        int i, temp;
+
+        for (i = 0; i < array.size(); i++) {
+            temp = array.get(i);
+            count[temp]++;
+        }
+
+        for (i = 1; i < count.length; i++) {
+            if (count[i] >= array.size() / 2) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    /*private static int exercise11(ArrayList<Integer> array) {
 
         int occurrences = 0;
         int candidate = 0;
@@ -110,10 +115,10 @@ public class Main {
         } else {
             return -1;
         }
-    }
+    }*/
 
     public static void main(String[] args) {
-        /*System.out.println("------------------------- Exercise 1 -------------------------");
+        System.out.println("------------------------- Exercise 1 -------------------------");
         // Test 1
         System.out.println("---- Test 1 ----\n");
 
@@ -167,22 +172,22 @@ public class Main {
 
         // Test 2
         System.out.println("---- Test 2 ----\n");
-        int input_10_2 = 4096; // 12
+        int input_10_2 = 4095; // returns -1 because it's not a power of 2
         System.out.printf("Input is:\t %d%n", input_10_2);
-        System.out.printf("Result is:\t %d %n%n", logTo(input_10_2));*/
+        System.out.printf("Result is:\t %d %n%n", logTo(input_10_2));
 
         System.out.println("------------------------- Exercise 11 -------------------------");
         // Test 1
         System.out.println("---- Test 1 ----\n");
 
-        ArrayList<Integer> input_11_1 = new ArrayList<Integer>(Arrays.asList(7,7,3,7,3,1,7,4,7,1,7,5));
+        ArrayList<Integer> input_11_1 = new ArrayList<>(Arrays.asList(7,7,3,7,3,1,7,4,7,1,7,5));
         System.out.printf("Input:\t %s %n", input_11_1);
         System.out.printf("Output:\t %s %n%n", exercise11(input_11_1));
 
         // Test 2
         System.out.println("---- Test 2 ----\n");
 
-        ArrayList<Integer> input_11_2 = new ArrayList<Integer>(fillArray(12));
+        ArrayList<Integer> input_11_2 = new ArrayList<>(fillArray(12));
         System.out.printf("Input:\t %s %n", input_11_2);
         System.out.printf("Output:\t %s %n%n", exercise11(input_11_2));
     }
