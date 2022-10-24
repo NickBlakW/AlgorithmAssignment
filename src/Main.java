@@ -70,8 +70,13 @@ public class Main {
     // Exercise 10
     private static int logTo(int N) {
         if (N < 2) return 0;
+        double pow = Math.log(N) / Math.log(2);
 
-        return 1 + logTo(N / 2);
+        if ((int)(Math.ceil(pow))
+           == (int)(Math.floor(pow)))
+            return 1 + logTo(N / 2);
+
+        else return -1;
     }
 
     // Exercise 11
