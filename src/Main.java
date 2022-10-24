@@ -44,8 +44,7 @@ public class Main {
 
     // Exercise 4
     // ALTERNATIVELY USE int[]
-    private static ArrayList<Integer> exercise4(ArrayList<Integer> list) {
-
+    private static int[] exercise4(int[] list) {
 
         return null;
     }
@@ -63,17 +62,16 @@ public class Main {
 
     // Exercise 7
     private static int[] exercise7(int Z) {
-        int[] result = new int[3];
-
+        int result[] = new int[3];
 
         return result;
     }
 
     // Exercise 10
-    private static long logTo(int N) {
+    private static int logTo(int N) {
+        if (N < 2) return 0;
 
-
-        return 0;
+        return 1 + logTo(N / 2);
     }
 
     // Exercise 11
@@ -128,5 +126,18 @@ public class Main {
         System.out.printf("Result is:\t %d %n%n", sumDivisibleBy3(input_6_2));
 
 
+
+
+        System.out.println("------------------------- Exercise 10 -------------------------");
+        System.out.println("---- Test 1 ----\n");
+        int input_10 = 32; // 5
+        System.out.printf("Input is:\t %d%n", input_10);
+        System.out.printf("Result is:\t %d %n%n", logTo(input_10));
+
+        // Test 2
+        System.out.println("---- Test 2 ----\n");
+        int input_10_2 = 4096; // 12
+        System.out.printf("Input is:\t %d%n", input_10_2);
+        System.out.printf("Result is:\t %d %n%n", logTo(input_10_2));
     }
 }
