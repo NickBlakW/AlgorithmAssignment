@@ -43,15 +43,31 @@ public class Main {
 
         for (int i = 0; i < list.length; i++) {
             int n = 0;
-            n = list[i]%modulus;
-            for (int j = 0; j < temp.length; j++) {
-                if (j == i) {
-                    continue;
+            int m = 0;
+            n = (int) Math.floor(Math.log(list[i])/Math.log(2));
+            m = (int) Math.ceil(Math.log(list[i])/Math.log(2));
+            System.out.println(n);
+            System.out.println(m);
+            if (n < m) {
+                for (int j = 0; j < temp.length; j++) {
+                    if (temp[j] == list[i]) {
+                        continue;
+                    }
+                    if (n < temp[j]) {
+                        temp[j] = n;
+                    }
                 }
-                if (n < temp[j]) {
-                    temp[j] = n;
+            } else {
+                for (int j = 0; j < temp.length; j++) {
+                    if (temp[j] == list[i]) {
+                        continue;
+                    }
+                    if (m < temp[j]) {
+                        temp[j] = m;
+                    }
                 }
             }
+
         }
 
         int addedNumbers = 0;
@@ -76,9 +92,27 @@ public class Main {
 
     // Exercise 7
     private static int[] exercise7(int Z) {
-        int result[] = new int[3];
+        boolean isPower;
+        int n;
+        {
+            for (int x = 2; x <= Math.sqrt(n); x++) {
+                int y = 2;
 
-        return result;
+                double p = Math.pow(x, y);
+
+                while (p <= n && p > 0) {
+                    if (p == n)
+                        isPower = true;
+                    y++;
+                    p = Math.pow(x, y);
+                }
+            }
+            isPower = false;
+        }
+
+        if (isPower) {
+            if ()
+        }
     }
 
     // Exercise 10
@@ -158,14 +192,14 @@ public class Main {
         // Test 1
         System.out.println("---- Test 1 ----\n");
         int[] input_4 = {23,56,22,11,65,89,3,44,87,910,45,35,98};
-        System.out.printf("Input is:\t %s", Arrays.toString(input_4));
-        System.out.printf("Result is:\t %s", Arrays.toString(exercise4(input_4)));
+        System.out.printf("Input is:\t %s%n", Arrays.toString(input_4));
+        System.out.printf("Result is:\t %s%n", Arrays.toString(exercise4(input_4)));
 
         // Test 2
         System.out.println("---- Test 2 ----\n");
         int[] input_4_2 = {89,58,2654,346,465,18,44,46,6,313,64,65};
-        System.out.printf("Input is:\t %s", Arrays.toString(input_4_2));
-        System.out.printf("Result is:\t %s", Arrays.toString(exercise4(input_4_2)));
+        System.out.printf("Input is:\t %s%n", Arrays.toString(input_4_2));
+        System.out.printf("Result is:\t %s%n", Arrays.toString(exercise4(input_4_2)));
 
 
         System.out.println("------------------------- Exercise 6 -------------------------");
