@@ -53,7 +53,14 @@ public class Main {
 
     // Exercise 7
     private static int[] exercise7(int Z) {
-        int result[] = new int[3];
+        int[] result = new int[3];
+        int root = Z / 2;
+
+        for ( int i = 0; i < 10; i++ ) {
+            root = (root + Z / root) / 2;
+        }
+
+        result[0] = root;
 
         return result;
     }
@@ -70,30 +77,18 @@ public class Main {
         else return -1;
     }
 
-    // To fill an array in exercise 11
-    private static ArrayList<Integer> fillArray(int size) {
-
-        ArrayList<Integer> array = new ArrayList<>();
-        Random randomInt = new Random();
-
-        for (int i = 0; i < size; i++) {
-            array.add(randomInt.nextInt(7) + 1);
-        }
-        return array;
-    }
-
     // Exercise 11
-    private static int exercise11(ArrayList<Integer> array) {
+    private static int exercise11(int[] array) {
         int[] count = new int[8];
         int i, temp;
 
-        for (i = 0; i < array.size(); i++) {
-            temp = array.get(i);
+        for (i = 0; i < array.length; i++) {
+            temp = array[i];
             count[temp]++;
         }
 
         for (i = 1; i < count.length; i++) {
-            if (count[i] >= array.size() / 2) {
+            if (count[i] >= array.length / 2) {
                 return i;
             }
         }
@@ -101,24 +96,22 @@ public class Main {
         return -1;
     }
 
-    /*private static int exercise11(ArrayList<Integer> array) {
+    // To fill an array in exercise 11
+    private static int[] fillArray(int size) {
 
-        int occurrences = 0;
-        int candidate = 0;
-        for (int i = 0; i < array.size(); i++) {
-            int checking = array.get(i);
-            occurrences = Collections.frequency(array, checking);
-            candidate = checking;
+        int[] array = new int[size];
+        Random randomInt = new Random();
+
+        for (int i = 0; i < size; i++) {
+            array[i] = randomInt.nextInt(7) + 1;
         }
-        if (occurrences >= array.size()/2) {
-            return candidate;
-        } else {
-            return -1;
-        }
-    }*/
+        return array;
+    }
 
     public static void main(String[] args) {
-        System.out.println("------------------------- Exercise 1 -------------------------");
+        System.out.println(exercise7(81)[0]);
+
+        /*System.out.println("------------------------- Exercise 1 -------------------------");
         // Test 1
         System.out.println("---- Test 1 ----\n");
 
@@ -176,19 +169,20 @@ public class Main {
         System.out.printf("Input is:\t %d%n", input_10_2);
         System.out.printf("Result is:\t %d %n%n", logTo(input_10_2));
 
+
         System.out.println("------------------------- Exercise 11 -------------------------");
         // Test 1
         System.out.println("---- Test 1 ----\n");
 
-        ArrayList<Integer> input_11_1 = new ArrayList<>(Arrays.asList(7,7,3,7,3,1,7,4,7,1,7,5));
-        System.out.printf("Input:\t %s %n", input_11_1);
-        System.out.printf("Output:\t %s %n%n", exercise11(input_11_1));
+        int[] input_11 = {7,7,3,7,3,1,7,4,7,1,7,5};
+        System.out.printf("Input:\t %s %n", Arrays.toString(input_11));
+        System.out.printf("Output:\t %s %n%n", exercise11(input_11));
 
         // Test 2
         System.out.println("---- Test 2 ----\n");
 
-        ArrayList<Integer> input_11_2 = new ArrayList<>(fillArray(12));
-        System.out.printf("Input:\t %s %n", input_11_2);
-        System.out.printf("Output:\t %s %n%n", exercise11(input_11_2));
+        int[] input_11_2 = fillArray(12);
+        System.out.printf("Input:\t %s %n", Arrays.toString(input_11_2));
+        System.out.printf("Output:\t %s %n%n", exercise11(input_11_2));*/
     }
 }
