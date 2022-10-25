@@ -36,47 +36,45 @@ public class Main {
     // Exercise 4
     // ALTERNATIVELY USE int[]
     private static int[] exercise4(int[] list) {
-
-        int modulus = 2;
-        int[] temp = new int[3];
-        int[] numbers = new int[2];
+        int g1 = 0;
+        int g2 = 0;
+        int g3 = 0;
+        int powG = 0;
+        int MAX = 0x7fffffff;
+        int[] finalGuess = new int[4];
 
         for (int i = 0; i < list.length; i++) {
-            int n = 0;
-            int m = 0;
-            n = (int) Math.floor(Math.log(list[i])/Math.log(2));
-            m = (int) Math.ceil(Math.log(list[i])/Math.log(2));
-            System.out.println(n);
-            System.out.println(m);
-            if (n < m) {
-                for (int j = 0; j < temp.length; j++) {
-                    if (temp[j] == list[i]) {
-                        continue;
-                    }
-                    if (n < temp[j]) {
-                        temp[j] = n;
-                    }
-                }
-            } else {
-                for (int j = 0; j < temp.length; j++) {
-                    if (temp[j] == list[i]) {
-                        continue;
-                    }
-                    if (m < temp[j]) {
-                        temp[j] = m;
+            int ig = list[i];
+
+            for (int j = 0; j < list.length; j++) {
+                if (j == i) break;
+                int jg = list[j];
+
+                for (int k = 0; k < list.length; k++) {
+                    int kg = list[k];
+                    if (k == j || k == i) break;
+
+                    int pow = 1;
+                    int sum = ig + jg + kg;
+                    while (pow / 2 < (sum)) {
+                        if (Math.abs(sum - pow) < MAX) {
+                            MAX = Math.abs(sum - pow);
+                            g1 = ig;
+                            g2 = jg;
+                            g3 = kg;
+                            powG = pow;
+                        }
+                        pow *= 2;
                     }
                 }
             }
-
         }
+        finalGuess[0] = g1;
+        finalGuess[1] = g2;
+        finalGuess[2] = g3;
+        finalGuess[3] = powG;
 
-        int addedNumbers = 0;
-
-        for (int i = 0; i < temp.length; i++) {
-            addedNumbers += temp[i];
-        }
-
-        return temp;
+        return finalGuess;
     }
 
     // Exercise 6
@@ -92,7 +90,8 @@ public class Main {
 
     // Exercise 7
     private static int[] exercise7(int Z) {
-        boolean isPower;
+
+        /*boolean isPower;
         int n;
         {
             for (int x = 2; x <= Math.sqrt(n); x++) {
@@ -111,8 +110,9 @@ public class Main {
         }
 
         if (isPower) {
-            if ()
-        }
+            if ();
+        }*/
+        return null;
     }
 
     // Exercise 10
