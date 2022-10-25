@@ -1,21 +1,18 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 
 public class Main {
 
     // Exercise 1
     private static int exercise1(int N) {
-        int result = 0;
+        if (N == 0) return 0;
 
-        for (int i = 0; i < N; i++) {
-            // Set result to add square if divisible by 2
-            if (i % 2 != 0) {
-                result += i * i;
-            } else {
-                continue;
-            }
+        if (N % 2 != 0) {
+            return exercise1(N - 1) + (int) Math.pow(N, 2);
+        } else {
+            return exercise1(N - 1);
         }
-
-        return result;
     }
 
     // Exercise 3
@@ -23,9 +20,7 @@ public class Main {
         // For deleting indices after check
         StringBuilder sb = new StringBuilder(s);
 
-        if (s.length() < 3) {
-            return false;
-        }
+        if (s.length() < 3) return false;
 
         // ASCII values are 48 higher than corresponding values
         // If not true check again!
@@ -40,17 +35,14 @@ public class Main {
 
     // Exercise 4
     // ALTERNATIVELY USE int[]
-    private static ArrayList<Integer> exercise4(ArrayList<Integer> list) {
-
+    private static int[] exercise4(int[] list) {
 
         return null;
     }
 
     // Exercise 6
     private static int sumDivisibleBy3(int N) {
-        if (N == 0) {
-            return 0;
-        }
+        if (N == 0) return 0;
 
         if (N % 3 != 0) {
             return sumDivisibleBy3(N - 1);
@@ -60,39 +52,84 @@ public class Main {
     }
 
     // Exercise 7
-    private static ArrayList<Integer> exercise7(int Z) {
+    private static int[] exercise7(int Z) {
+        int result[] = new int[3];
 
-
-        return null;
+        return result;
     }
 
     // Exercise 10
-    private static long logTo(int N) {
+    private static int logTo(int N) {
+        if (N < 2) return 0;
+        double pow = Math.log(N) / Math.log(2);
 
+        if ((int)(Math.ceil(pow))
+           == (int)(Math.floor(pow)))
+            return 1 + logTo(N / 2);
 
-        return 0;
+        else return -1;
+    }
+
+    // To fill an array in exercise 11
+    private static ArrayList<Integer> fillArray(int size) {
+
+        ArrayList<Integer> array = new ArrayList<>();
+        Random randomInt = new Random();
+
+        for (int i = 0; i < size; i++) {
+            array.add(randomInt.nextInt(7) + 1);
+        }
+        return array;
     }
 
     // Exercise 11
-    private static int exercise11(ArrayList<Integer> array, int size) {
+    private static int exercise11(ArrayList<Integer> array) {
+        int[] count = new int[8];
+        int i, temp;
 
+        for (i = 0; i < array.size(); i++) {
+            temp = array.get(i);
+            count[temp]++;
+        }
 
-        return 0;
+        for (i = 1; i < count.length; i++) {
+            if (count[i] >= array.size() / 2) {
+                return i;
+            }
+        }
+
+        return -1;
     }
+
+    /*private static int exercise11(ArrayList<Integer> array) {
+
+        int occurrences = 0;
+        int candidate = 0;
+        for (int i = 0; i < array.size(); i++) {
+            int checking = array.get(i);
+            occurrences = Collections.frequency(array, checking);
+            candidate = checking;
+        }
+        if (occurrences >= array.size()/2) {
+            return candidate;
+        } else {
+            return -1;
+        }
+    }*/
 
     public static void main(String[] args) {
         System.out.println("------------------------- Exercise 1 -------------------------");
         // Test 1
         System.out.println("---- Test 1 ----\n");
 
-        int input_1 = 8;
+        int input_1 = 8; // 1^2 + 3^2 + 5^2 + 7^2 = 84
         System.out.printf("Input:\t %2d %n", input_1);
         System.out.printf("Output:\t %2d %n%n", exercise1(input_1));
 
         // Test 2
         System.out.println("---- Test 2 ----\n");
 
-        int input_1_2 = 10;
+        int input_1_2 = 10; // 1^2 + 3^2 + 5^2 + 7^2 + 9^2 = 165
         System.out.printf("Input:\t %2d %n", input_1_2);
         System.out.printf("Output:\t %2d %n%n", exercise1(input_1_2));
 
@@ -120,8 +157,38 @@ public class Main {
 
         // Test 2
         System.out.println("---- Test 2 ----\n");
-        int input_6_2 = 10; // 3 + 6 + 9 = 18
+        int input_6_2 = 14; // 3 + 6 + 9 + 12 = 30
         System.out.printf("Input is:\t %d%n", input_6_2);
         System.out.printf("Result is:\t %d %n%n", sumDivisibleBy3(input_6_2));
+
+
+
+
+        System.out.println("------------------------- Exercise 10 -------------------------");
+        System.out.println("---- Test 1 ----\n");
+        int input_10 = 32; // 5
+        System.out.printf("Input is:\t %d%n", input_10);
+        System.out.printf("Result is:\t %d %n%n", logTo(input_10));
+
+        // Test 2
+        System.out.println("---- Test 2 ----\n");
+        int input_10_2 = 4095; // returns -1 because it's not a power of 2
+        System.out.printf("Input is:\t %d%n", input_10_2);
+        System.out.printf("Result is:\t %d %n%n", logTo(input_10_2));
+
+        System.out.println("------------------------- Exercise 11 -------------------------");
+        // Test 1
+        System.out.println("---- Test 1 ----\n");
+
+        ArrayList<Integer> input_11_1 = new ArrayList<>(Arrays.asList(7,7,3,7,3,1,7,4,7,1,7,5));
+        System.out.printf("Input:\t %s %n", input_11_1);
+        System.out.printf("Output:\t %s %n%n", exercise11(input_11_1));
+
+        // Test 2
+        System.out.println("---- Test 2 ----\n");
+
+        ArrayList<Integer> input_11_2 = new ArrayList<>(fillArray(12));
+        System.out.printf("Input:\t %s %n", input_11_2);
+        System.out.printf("Output:\t %s %n%n", exercise11(input_11_2));
     }
 }
