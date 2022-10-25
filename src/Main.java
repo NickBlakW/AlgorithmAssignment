@@ -89,29 +89,24 @@ public class Main {
     }
 
     // Exercise 7
-    private static int[] exercise7(int Z) {
+    private static int[] exercise7(int N) {
 
-        /*boolean isPower;
-        int n;
+        boolean isPower;
         {
-            for (int x = 2; x <= Math.sqrt(n); x++) {
+            for (int x = 2; x <= Math.sqrt(N); x++) {
                 int y = 2;
 
                 double p = Math.pow(x, y);
 
-                while (p <= n && p > 0) {
-                    if (p == n)
+                while (p <= N && p > 0) {
+                    if (p == N)
                         isPower = true;
                     y++;
                     p = Math.pow(x, y);
+                    System.out.println(p);;
                 }
             }
-            isPower = false;
         }
-
-        if (isPower) {
-            if ();
-        }*/
         return null;
     }
 
@@ -215,8 +210,18 @@ public class Main {
         System.out.printf("Input is:\t %d%n", input_6_2);
         System.out.printf("Result is:\t %d %n%n", sumDivisibleBy3(input_6_2));
 
+        System.out.println("------------------------- Exercise 7 -------------------------");
+        // Test 1
+        System.out.println("---- Test 1 ----\n");
+        int input_7 = 6561; // 3
+        System.out.printf("Input is:\t %d%n", input_7);
+        System.out.printf("Result is:\t %d %n%n", exercise7(input_7));
 
-
+        // Test 2
+        System.out.println("---- Test 2 ----\n");
+        int input_7_2 = 14; // 3 + 6 + 9 + 12 = 30
+        System.out.printf("Input is:\t %d%n", input_7_2);
+        System.out.printf("Result is:\t %d %n%n", sumDivisibleBy3(input_7_2));
 
         System.out.println("------------------------- Exercise 10 -------------------------");
         System.out.println("---- Test 1 ----\n");
