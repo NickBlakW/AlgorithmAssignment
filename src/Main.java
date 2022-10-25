@@ -37,7 +37,30 @@ public class Main {
     // ALTERNATIVELY USE int[]
     private static int[] exercise4(int[] list) {
 
-        return null;
+        int modulus = 2;
+        int[] temp = new int[3];
+        int[] numbers = new int[2];
+
+        for (int i = 0; i < list.length; i++) {
+            int n = 0;
+            n = list[i]%modulus;
+            for (int j = 0; j < temp.length; j++) {
+                if (j == i) {
+                    continue;
+                }
+                if (n < temp[j]) {
+                    temp[j] = n;
+                }
+            }
+        }
+
+        int addedNumbers = 0;
+
+        for (int i = 0; i < temp.length; i++) {
+            addedNumbers += temp[i];
+        }
+
+        return temp;
     }
 
     // Exercise 6
@@ -101,24 +124,8 @@ public class Main {
         return -1;
     }
 
-    /*private static int exercise11(ArrayList<Integer> array) {
-
-        int occurrences = 0;
-        int candidate = 0;
-        for (int i = 0; i < array.size(); i++) {
-            int checking = array.get(i);
-            occurrences = Collections.frequency(array, checking);
-            candidate = checking;
-        }
-        if (occurrences >= array.size()/2) {
-            return candidate;
-        } else {
-            return -1;
-        }
-    }*/
-
     public static void main(String[] args) {
-        System.out.println("------------------------- Exercise 1 -------------------------");
+        /*System.out.println("------------------------- Exercise 1 -------------------------");
         // Test 1
         System.out.println("---- Test 1 ----\n");
 
@@ -145,10 +152,23 @@ public class Main {
         System.out.println("---- Test 2 ----\n");
         String input_3_2 = "523376"; // Should return false
         System.out.printf("Input is:\t %s%n", input_3_2);
-        System.out.printf("Result is:\t %b %n%n", additive(input_3_2));
+        System.out.printf("Result is:\t %b %n%n", additive(input_3_2));*/
+
+        System.out.println("------------------------- Exercise 4 -------------------------");
+        // Test 1
+        System.out.println("---- Test 1 ----\n");
+        int[] input_4 = {23,56,22,11,65,89,3,44,87,910,45,35,98};
+        System.out.printf("Input is:\t %s", Arrays.toString(input_4));
+        System.out.printf("Result is:\t %s", Arrays.toString(exercise4(input_4)));
+
+        // Test 2
+        System.out.println("---- Test 2 ----\n");
+        int[] input_4_2 = {89,58,2654,346,465,18,44,46,6,313,64,65};
+        System.out.printf("Input is:\t %s", Arrays.toString(input_4_2));
+        System.out.printf("Result is:\t %s", Arrays.toString(exercise4(input_4_2)));
 
 
-        System.out.println("------------------------- Exercise 6 -------------------------");
+        /*System.out.println("------------------------- Exercise 6 -------------------------");
         // Test 1
         System.out.println("---- Test 1 ----\n");
         int input_6 = 4; // 3
@@ -189,6 +209,6 @@ public class Main {
 
         ArrayList<Integer> input_11_2 = new ArrayList<>(fillArray(12));
         System.out.printf("Input:\t %s %n", input_11_2);
-        System.out.printf("Output:\t %s %n%n", exercise11(input_11_2));
+        System.out.printf("Output:\t %s %n%n", exercise11(input_11_2));*/
     }
 }
