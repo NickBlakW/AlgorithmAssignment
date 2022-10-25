@@ -125,7 +125,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        /*System.out.println("------------------------- Exercise 1 -------------------------");
+        System.out.println("------------------------- Exercise 1 -------------------------");
         // Test 1
         System.out.println("---- Test 1 ----\n");
 
@@ -152,7 +152,7 @@ public class Main {
         System.out.println("---- Test 2 ----\n");
         String input_3_2 = "523376"; // Should return false
         System.out.printf("Input is:\t %s%n", input_3_2);
-        System.out.printf("Result is:\t %b %n%n", additive(input_3_2));*/
+        System.out.printf("Result is:\t %b %n%n", additive(input_3_2));
 
         System.out.println("------------------------- Exercise 4 -------------------------");
         // Test 1
@@ -168,7 +168,7 @@ public class Main {
         System.out.printf("Result is:\t %s", Arrays.toString(exercise4(input_4_2)));
 
 
-        /*System.out.println("------------------------- Exercise 6 -------------------------");
+        System.out.println("------------------------- Exercise 6 -------------------------");
         // Test 1
         System.out.println("---- Test 1 ----\n");
         int input_6 = 4; // 3
@@ -209,6 +209,6 @@ public class Main {
 
         ArrayList<Integer> input_11_2 = new ArrayList<>(fillArray(12));
         System.out.printf("Input:\t %s %n", input_11_2);
-        System.out.printf("Output:\t %s %n%n", exercise11(input_11_2));*/
+        System.out.printf("Output:\t %s %n%n", exercise11(input_11_2));
     }
 }
