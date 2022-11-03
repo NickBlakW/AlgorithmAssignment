@@ -5,10 +5,10 @@ public class Main {
 
     // Exercise 1
     private static int recursivePosInt(int N) {
-        if (N == 0) return 0;
+        if (N <= 1) return 1;
 
         if (N % 2 != 0) {
-            return recursivePosInt(N - 1) + (int) Math.pow(N, 2);
+            return recursivePosInt(N - 2) + (int) Math.pow(N, 2);
         } else {
             return recursivePosInt(N - 1);
         }
@@ -77,12 +77,12 @@ public class Main {
 
     // Exercise 6
     private static int sumDivByThree(int N) {
-        if (N == 0) return 0;
+        if (N <= 3) return 3;
 
         if (N % 3 != 0) {
             return sumDivByThree(N - 1);
         } else {
-            return N + sumDivByThree(N - 1);
+            return N + sumDivByThree(N - 3);
         }
     }
 
@@ -94,8 +94,8 @@ public class Main {
             return null;
         }
 
-        for (int i = 2; i < Math.sqrt(Z); i++) {
-            for (int j = 2; j < Math.sqrt(Z); j++) {
+        for (int i = 3; i < Math.sqrt(Z); i++) {
+            for (int j = 3; j < Math.log(Z); j++) {
                 int power = (int)Math.pow(i, j);
 
                 if (power == Z) {
@@ -130,7 +130,7 @@ public class Main {
         }
 
         for (i = 1; i < count.length; i++) {
-            if (count[i] >= array.length / 2) {
+            if (count[i] > array.length / 2) {
                 return i;
             }
         }
