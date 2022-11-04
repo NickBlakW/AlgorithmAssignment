@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Random;
 
 public class Main {
 
@@ -16,9 +15,6 @@ public class Main {
 
     // Exercise 3
     private static boolean additive(String s) {
-        // For deleting indices after check
-        StringBuilder sb = new StringBuilder(s);
-
         if (s.length() < 3) return false;
 
         // ASCII values are 48 higher than corresponding values
@@ -26,51 +22,50 @@ public class Main {
         if (s.charAt(0)-48 + s.charAt(1)-48 == s.charAt(2)-48) {
             return true;
         } else {
-            sb.delete(0, 1);
+            s = s.substring(1);
 
-            return additive(sb.toString());
+            return additive(s);
         }
     }
 
     // Exercise 4
     private static int[] powerCloseToTwo(int[] list) {
-        int g1 = 0;
-        int g2 = 0;
-        int g3 = 0;
-        int powG = 0;
-        int maxValue = 0x7fffffff;
+        int firstGuess = 0;
+        int secondGuess = 0;
+        int thirdGuess = 0;
+        int powerGuess = 0;
         int[] finalNumbers = new int[4];
 
         for (int i = 0; i < list.length; i++) {
-            int ig = list[i];
+            int iGuess = list[i];
 
             for (int j = 0; j < list.length; j++) {
                 if (j == i) break;
-                int jg = list[j];
+                int jGuess = list[j];
 
                 for (int k = 0; k < list.length; k++) {
-                    int kg = list[k];
                     if (k == j || k == i) break;
+                    int kGuess = list[k];
 
-                    int pow = 1;
-                    int sum = ig + jg + kg;
-                    while (pow / 2 < (sum)) {
+                    int sum = iGuess + jGuess + kGuess;
+                    int maxValue = 0x7fffffff;
+
+                    for (int pow = 1; pow / 2 < sum; pow *= 2) {
                         if (Math.abs(sum - pow) < maxValue) {
                             maxValue = Math.abs(sum - pow);
-                            g1 = ig;
-                            g2 = jg;
-                            g3 = kg;
-                            powG = pow;
+                            firstGuess = iGuess;
+                            secondGuess = jGuess;
+                            thirdGuess = kGuess;
+                            powerGuess = pow;
                         }
-                        pow *= 2;
                     }
                 }
             }
         }
-        finalNumbers[0] = g1;
-        finalNumbers[1] = g2;
-        finalNumbers[2] = g3;
-        finalNumbers[3] = powG;
+        finalNumbers[0] = firstGuess;
+        finalNumbers[1] = secondGuess;
+        finalNumbers[2] = thirdGuess;
+        finalNumbers[3] = powerGuess;
 
         return finalNumbers;
     }
@@ -138,18 +133,6 @@ public class Main {
         return -1;
     }
 
-    // To fill an array in exercise 11
-    private static int[] arrayGenerator(int size) {
-
-        int[] array = new int[size];
-        Random randomInt = new Random();
-
-        for (int i = 0; i < size; i++) {
-            array[i] = randomInt.nextInt(7) + 1;
-        }
-        return array;
-    }
-
     public static void main(String[] args) {
         System.out.println("------------------------- Exercise 1 -------------------------");
         // Test 1
@@ -185,12 +168,6 @@ public class Main {
         int[] input_4 = {23,56,22,11,65,89,3,44,87,910,45,35,98};
         System.out.printf("Input is:\t %s%n", Arrays.toString(input_4));
         System.out.printf("Result is:\t %s%n", Arrays.toString(powerCloseToTwo(input_4)));
-
-        // Test 2
-        System.out.println("---- Test 2 ----\n");
-        int[] input_4_2 = {89,58,2654,346,465,18,44,46,6,313,64,65};
-        System.out.printf("Input is:\t %s%n", Arrays.toString(input_4_2));
-        System.out.printf("Result is:\t %s%n", Arrays.toString(powerCloseToTwo(input_4_2)));
 
         System.out.println("------------------------- Exercise 6 -------------------------");
         // Test 1
@@ -238,11 +215,5 @@ public class Main {
         int[] input_11 = {7,7,3,7,3,1,7,4,7,1,7,5};
         System.out.printf("Input:\t %s %n", Arrays.toString(input_11));
         System.out.printf("Output:\t %s %n%n", majorityVote(input_11));
-
-        // Test 2
-        System.out.println("---- Test 2 ----\n");
-        int[] input_11_2 = arrayGenerator(12);
-        System.out.printf("Input:\t %s %n", Arrays.toString(input_11_2));
-        System.out.printf("Output:\t %s %n%n", majorityVote(input_11_2));
     }
 }
